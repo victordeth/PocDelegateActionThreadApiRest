@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Testes_Delegate
 {
-    public class UF
+        public class UF
     {
         public int cod_uf { get; set; }
         public string des_uf { get; set; }
