@@ -25,6 +25,7 @@ namespace Testes_Delegate
         {
             OnEscreveLinha("Esquentando a Panela...");
             System.Threading.Tasks.Task.Delay(3000).Wait();
+            HowMany(howMany);
             OnEscreveLinha($"Quebrando {howMany} ovos");
             OnEscreveLinha("fritando os ovos ...");
             System.Threading.Tasks.Task.Delay(3000).Wait();
@@ -37,6 +38,7 @@ namespace Testes_Delegate
         {
             OnEscreveLinha("Esquentando a Panela...");
             await System.Threading.Tasks.Task.Delay(3000);
+            HowMany(howMany);
             OnEscreveLinha($"Quebrando {howMany} ovos");
             OnEscreveLinha("fritando os ovos ...");
             await System.Threading.Tasks.Task.Delay(3000);
@@ -54,6 +56,7 @@ namespace Testes_Delegate
             {
                 OnEscreveLinha("Virando a fatia de bacon");
             }
+            HowMany(slices);
             OnEscreveLinha("Fritando o segundo lado do bacon ...");
             System.Threading.Tasks.Task.Delay(3000).Wait();
             OnEscreveLinha("Colocando o Bacon no prato");
@@ -70,6 +73,7 @@ namespace Testes_Delegate
             {
                 OnEscreveLinha("Virando a fatia de bacon");
             }
+            HowMany(slices);
             OnEscreveLinha("Fritando o segundo lado do bacon ...");
             await System.Threading.Tasks.Task.Delay(3000);
             OnEscreveLinha("Colocando o Bacon no prato");
@@ -83,6 +87,7 @@ namespace Testes_Delegate
             {
                 OnEscreveLinha("Colocando a fatia de torrada na torradeira");
             }
+            HowMany(slices);
             OnEscreveLinha("Ligando a torradeira");
             System.Threading.Tasks.Task.Delay(3000).Wait();
             OnEscreveLinha("Retirando a torrada da torradeira");
@@ -96,6 +101,7 @@ namespace Testes_Delegate
             {
                 OnEscreveLinha("Colocando a fatia de torrada na torradeira");
             }
+            HowMany(slices);
             OnEscreveLinha("Ligando a torradeira");
             await System.Threading.Tasks.Task.Delay(3000);
             OnEscreveLinha("Retirando a torrada da torradeira");
@@ -106,6 +112,7 @@ namespace Testes_Delegate
         public async Task<Toast> MakeToastWithButterAndJamAsync(int number)
         {
             var toast = await ToastBreadAsync(number);
+            HowMany(number);
             ApplyButter(toast);
             ApplyJam(toast);
 
@@ -123,6 +130,15 @@ namespace Testes_Delegate
 
         public  void ApplyButter(Toast toast) =>
             OnEscreveLinha("Colocando Geleia na Torrada");
+
+
+        void HowMany(int Vezes)
+        {
+            outraclassDelegate outraclassDelegate = new outraclassDelegate();
+            outraclassDelegate.EscreveLinha += OnEscreveLinha;
+
+            outraclassDelegate.UsaDelegateAqui(Vezes);
+        }
 
 
     }
